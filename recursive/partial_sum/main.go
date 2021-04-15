@@ -25,6 +25,12 @@ func PartialSum(i int, w int, inputs *[]int, indent int) bool {
 		}
 	}
 
+	// 部分和が負になることはない
+	if w < 0 {
+		util.ReturnPrintf(indent, "PartialSum(%v, %v) = false\n", i, w)
+		return false
+	}
+
 	// 1. inputs[N-1]を含まない：inputs[0]...inputs[N-2]の部分和「w」が存在する
 	if PartialSum(i-1, w, inputs, indent+1) {
 		util.ReturnPrintf(indent, "PartialSum(%v, %v) = true\n", i-1, w)
