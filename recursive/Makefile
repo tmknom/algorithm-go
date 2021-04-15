@@ -8,3 +8,6 @@ fibonacci: ## run fibonacci
 
 for: ## run for
 	$(call run,for)
+
+memo: ## run memo
+	$(call run,memo)
