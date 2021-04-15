@@ -11,3 +11,6 @@ min_pair: ## run min_pair
 
 partial_sum: ## run partial_sum
 	$(call run,partial_sum)
+
+bit: ## run bit
+	$(call run,bit)
