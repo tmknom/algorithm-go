@@ -11,3 +11,6 @@ for: ## run for
 
 memo: ## run memo
 	$(call run,memo)
+
+partial_sum: ## run partial_sum
+	$(call run,partial_sum)

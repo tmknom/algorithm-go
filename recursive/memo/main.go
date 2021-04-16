@@ -14,9 +14,9 @@ func Fibonacci(x int, indent int) int {
 		return memo[x]
 	}
 
-	util.IndentPrintf(indent, "call Fibonacci(%d)\n", x)
+	util.CallPrintf(indent, "Fibonacci(%d)\n", x)
 	result := Fibonacci(x-1, indent+1) + Fibonacci(x-2, indent+2)
-	util.IndentPrintf(indent, "return Fibonacci(%d) = %d\n", x, result)
+	util.ReturnPrintf(indent, "Fibonacci(%d) = %d\n", x, result)
 	return result
 }
 
