@@ -8,3 +8,6 @@ relaxation: ## run relaxation
 
 memo: ## run memo
 	$(call run,memo)
+
+knapsack: ## run knapsack
+	$(call run,knapsack)
