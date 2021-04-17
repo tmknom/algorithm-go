@@ -9,7 +9,7 @@ import (
 func TestSliceInitInfIntSlice(t *testing.T) {
 	cases := []struct {
 		size int
-		want []int
+		want util.SingleIntSlice
 	}{
 		{
 			size: 0,
@@ -17,12 +17,12 @@ func TestSliceInitInfIntSlice(t *testing.T) {
 		},
 		{
 			size: 3,
-			want: []int{util.Inf, util.Inf, util.Inf},
+			want: []int{util.PositiveInf, util.PositiveInf, util.PositiveInf},
 		},
 	}
 
 	for _, tc := range cases {
-		got := util.InitInfIntSlice(tc.size)
+		got := util.InitSingleIntSlice(tc.size, util.PositiveInf)
 		if diff := cmp.Diff(got, tc.want); diff != "" {
 			t.Errorf("tc: %#v: diff (-got +want):\n%s", tc, diff)
 		}

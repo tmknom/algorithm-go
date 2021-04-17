@@ -24,7 +24,7 @@ func Frog(i int, h []int, dp util.SingleIntSlice, indent int) int {
 }
 
 func run(h []int) {
-	dp := util.SingleIntDP
+	dp := util.SinglePositiveIntSlice
 	dp.SetFirst(0)
 	result := Frog(len(h)-1, h, dp, 0)
 	fmt.Printf("Frog(%#v) = %v\n", h, result)
