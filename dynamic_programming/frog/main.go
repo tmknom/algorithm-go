@@ -7,7 +7,7 @@ import (
 
 func Frog(h []int) int {
 	size := len(h)
-	dp := util.SinglePositiveIntSlice
+	dp := util.SinglePositiveIntSlice()
 
 	dp.SetFirst(0)
 	fmt.Printf("dp[%02d] = %02v\n", 0, dp[0])
