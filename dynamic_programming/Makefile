@@ -11,3 +11,6 @@ memo: ## run memo
 
 knapsack: ## run knapsack
 	$(call run,knapsack)
+
+vacation: ## run vacation
+	$(call run,vacation)

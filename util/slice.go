@@ -5,13 +5,6 @@ import "math"
 type SingleIntSlice []int
 type DoubleIntSlice [][]int
 
-var (
-	SinglePositiveIntSlice = InitSingleIntSlice(columnSize, PositiveInf)
-	SingleNegativeIntSlice = InitSingleIntSlice(columnSize, NegativeInf)
-	DoublePositiveIntSlice = InitDoubleIntSlice(columnSize, rowSize, PositiveInf)
-	DoubleNegativeIntSlice = InitDoubleIntSlice(columnSize, rowSize, NegativeInf)
-)
-
 const (
 	PositiveInf = math.MaxInt64 >> 3 // +1,152,921,504,606,846,975
 	NegativeInf = math.MinInt64 >> 3 // -1,152,921,504,606,846,976
@@ -35,6 +28,14 @@ func (s SingleIntSlice) IsComputed(i int) bool {
 	return (s[i] != PositiveInf) && (s[i] != NegativeInf)
 }
 
+func SinglePositiveIntSlice() SingleIntSlice {
+	return InitSingleIntSlice(columnSize, PositiveInf)
+}
+
+func SingleNegativeIntSlice() SingleIntSlice {
+	return InitSingleIntSlice(columnSize, NegativeInf)
+}
+
 func InitSingleIntSlice(size int, val int) SingleIntSlice {
 	slice := make([]int, size)
 	for i, _ := range slice {
@@ -52,6 +53,14 @@ func (s DoubleIntSlice) RowLength() int {
 		return 0
 	}
 	return len(s[0])
+}
+
+func DoublePositiveIntSlice() DoubleIntSlice {
+	return InitDoubleIntSlice(columnSize, rowSize, PositiveInf)
+}
+
+func DoubleNegativeIntSlice() DoubleIntSlice {
+	return InitDoubleIntSlice(columnSize, rowSize, NegativeInf)
 }
 
 func InitDoubleIntSlice(x int, y int, val int) DoubleIntSlice {
