@@ -5,8 +5,8 @@ import (
 	"fmt"
 )
 
-func Frog(i int, h []int, dp []int, indent int) int {
-	if dp[i] != util.Inf {
+func Frog(i int, h []int, dp util.SingleIntSlice, indent int) int {
+	if dp.IsComputed(i) {
 		return dp[i]
 	}
 
@@ -24,10 +24,10 @@ func Frog(i int, h []int, dp []int, indent int) int {
 }
 
 func run(h []int) {
-	dp := util.InitInfIntSlice(len(h))
-	dp[0] = 0
+	dp := util.SingleIntDP
+	dp.SetFirst(0)
 	result := Frog(len(h)-1, h, dp, 0)
-	fmt.Printf("Frog(%#v) = %v, dp = %#v\n", h, result, dp)
+	fmt.Printf("Frog(%#v) = %v\n", h, result)
 }
 
 func main() {
