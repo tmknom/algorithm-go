@@ -5,39 +5,37 @@ import (
 	"fmt"
 )
 
-func Knapsack(threshold int, weights []int, values []int, dp [][]int) int {
-	size := len(weights)
-	for i := 0; i < size; i++ {
-		for w := 0; w <= threshold; w++ {
-			// i番目を選ばない
-			dp[i+1][w] = dp[i][w]
-			// i番目を選ぶ
-			if threshold-weights[i] >= 0 {
-				util.IntChooseMax(&dp[i+1][w], dp[i][threshold-weights[i]]+values[i])
+func Knapsack(maxWeight int, inputs [][]int) int {
+	sumValues := util.DoubleNegativeIntSlice()
+	for i := 0; i <= maxWeight; i++ {
+		sumValues[0][i] = 0
+	}
+
+	for i := 1; i < len(inputs)+1; i++ {
+		weight := inputs[i-1][0]
+		value := inputs[i-1][1]
+		for sumWeight := 0; sumWeight <= maxWeight; sumWeight++ {
+			if sumWeight-weight >= 0 {
+				util.IntChooseMax(&sumValues[i][sumWeight], value+sumValues[i-1][sumWeight-weight])
 			}
+			util.IntChooseMax(&sumValues[i][sumWeight], sumValues[i-1][sumWeight])
 		}
 	}
 
-	return dp[size][threshold]
-}
+	fmt.Println(sumValues.Dump(len(inputs)+1, maxWeight+1))
 
-func run(threshold int, weights []int, values []int) {
-	if len(weights) != len(values) {
-		panic("len not equaled")
-	}
-
-	dp := make([][]int, len(weights)+1)
-	for i := 0; i < len(dp); i++ {
-		dp[i] = make([]int, threshold+1)
-	}
-
-	result := Knapsack(threshold, weights, values, dp)
-	fmt.Printf("Knapsack = %v\n", result)
-	for i := 0; i < len(dp); i++ {
-		fmt.Printf("dp[%d] = %#03v\n", i, dp[i])
-	}
+	return sumValues[len(inputs)][maxWeight]
 }
 
 func main() {
-	run(10, []int{2, 1, 3, 2, 1, 5}, []int{3, 2, 6, 1, 3, 85})
+	inputs := [][]int{
+		{2, 3},
+		{1, 2},
+		{3, 6},
+		{2, 1},
+		{1, 3},
+		{5, 85},
+	}
+	result := Knapsack(10, inputs) // if maxWeight == 10 => result = 96
+	fmt.Println(result)
 }
