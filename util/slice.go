@@ -1,6 +1,11 @@
 package util
 
-import "math"
+import (
+	"fmt"
+	"math"
+	"strconv"
+	"strings"
+)
 
 type SingleIntSlice []int
 type DoubleIntSlice [][]int
@@ -28,6 +33,14 @@ func (s SingleIntSlice) IsComputed(i int) bool {
 	return (s[i] != PositiveInf) && (s[i] != NegativeInf)
 }
 
+func (s SingleIntSlice) Dump(x int) string {
+	str := make([]string, x)
+	for i := 0; i < x; i++ {
+		str[i] = strconv.Itoa(s[i])
+	}
+	return fmt.Sprintf("[ %s ]\n", strings.Join(str, ", "))
+}
+
 func SinglePositiveIntSlice() SingleIntSlice {
 	return InitSingleIntSlice(columnSize, PositiveInf)
 }
@@ -53,6 +66,18 @@ func (s DoubleIntSlice) RowLength() int {
 		return 0
 	}
 	return len(s[0])
+}
+
+func (s DoubleIntSlice) Dump(x int, y int) string {
+	result := ""
+	for i := 0; i < x; i++ {
+		str := make([]string, y)
+		for j := 0; j < y; j++ {
+			str[j] = strconv.Itoa(s[i][j])
+		}
+		result += fmt.Sprintf("[ %s ]\n", strings.Join(str, ", "))
+	}
+	return result
 }
 
 func DoublePositiveIntSlice() DoubleIntSlice {
