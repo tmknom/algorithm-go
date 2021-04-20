@@ -17,3 +17,6 @@ slice_queue: ## run slice_queue
 
 queue: ## run queue
 	$(call run,queue)
+
+heap: ## run heap
+	$(call run,heap)
