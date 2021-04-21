@@ -15,6 +15,9 @@ slice_stack: ## run slice_stack
 stack: ## run stack
 	$(call run,stack)
 
+list_queue: ## run list_queue
+	$(call run,list_queue)
+
 slice_queue: ## run slice_queue
 	$(call run,slice_queue)
 
