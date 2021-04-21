@@ -8,3 +8,9 @@ bidirectional_linked_list: ## run bidirectional_linked_list
 
 stack: ## run stack
 	$(call run,stack)
+
+slice_queue: ## run slice_queue
+	$(call run,slice_queue)
+
+queue: ## run queue
+	$(call run,queue)
