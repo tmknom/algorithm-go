@@ -6,6 +6,9 @@ linked_list: ## run linked_list
 bidirectional_linked_list: ## run bidirectional_linked_list
 	$(call run,bidirectional_linked_list)
 
+slice_stack: ## run slice_stack
+	$(call run,slice_stack)
+
 stack: ## run stack
 	$(call run,stack)
 
