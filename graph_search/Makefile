@@ -11,3 +11,6 @@ queue_bfs: ## run queue_bfs
 
 st_path: ## run st_path
 	$(call run,st_path)
+
+bipartite_graph: ## run bipartite_graph
+	$(call run,bipartite_graph)
