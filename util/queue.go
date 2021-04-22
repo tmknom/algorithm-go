@@ -21,6 +21,10 @@ func (q *Queue) Dequeue() int {
 	return q.values.Remove(q.values.Front()).(int)
 }
 
+func (q *Queue) IsEmpty() bool {
+	return q.values.Len() == 0
+}
+
 func (q *Queue) Get(index int) int {
 	return q.ToIntSlice()[index]
 }
