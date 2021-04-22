@@ -21,6 +21,10 @@ func (s *Stack) Pop() int {
 	return s.values.Remove(s.values.Back()).(int)
 }
 
+func (s *Stack) IsEmpty() bool {
+	return s.values.Len() == 0
+}
+
 func (s *Stack) Get(index int) int {
 	return s.ToIntSlice()[index]
 }
